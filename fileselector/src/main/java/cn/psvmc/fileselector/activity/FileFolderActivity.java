@@ -160,9 +160,14 @@ public class FileFolderActivity extends Activity implements OnClickListener, OnI
         if (view.getId() == R.id.iv_file_folder_back) {
             onBackPressed();
         } else if (view.getId() == R.id.btn_file_folder_ok) {
-            Intent intent = new Intent();
-            setResult(Activity.RESULT_OK, intent);
-            finish();
+            if(SelectedFiles.files.size() == 0){
+                Toast.makeText(this,"尚未选择文件",Toast.LENGTH_SHORT).show();
+            }else{
+                Intent intent = new Intent();
+                setResult(Activity.RESULT_OK, intent);
+                finish();
+            }
+
         }
     }
 
